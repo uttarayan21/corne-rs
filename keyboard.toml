@@ -142,13 +142,13 @@ LShift     Z     X     C     V      B        N      M     Comma  Dot    Slash   
 # Tune these timings to your preference
 [behavior.morse]
 enable_flow_tap = true
-prior_idle_time = "120ms"
-hold_timeout = "280ms"
+prior_idle_time = "150ms"
+hold_timeout = "250ms"
 gap_timeout = "250ms"
 
 [behavior.morse.profiles]
 # HRM profile: bilateral tap (same-hand combos always tap), permissive hold
-HRM = { unilateral_tap = true, permissive_hold = true, hold_timeout = "280ms", gap_timeout = "250ms" }
+HRM = { unilateral_tap = true, permissive_hold = true, hold_timeout = "250ms", gap_timeout = "250ms" }
 
 [ble]
 enabled = true
