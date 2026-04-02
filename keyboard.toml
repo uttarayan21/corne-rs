@@ -1,0 +1,188 @@
+[keyboard]
+name = "corne"
+product_name = "corne"
+vendor_id = 0x4c4b
+product_id = 0x4643
+manufacturer = "RMK"
+# chip = "nrf52840"
+board = "nice!nano_v2"
+
+[layout]
+rows = 4
+cols = 12
+layers = 5
+matrix_map = """
+(0,0,L)  (0,1,L)  (0,2,L)  (0,3,L)  (0,4,L)  (0,5,L)    (0,6,R)  (0,7,R)  (0,8,R)  (0,9,R)  (0,10,R)  (0,11,R)
+(1,0,L)  (1,1,L)  (1,2,L)  (1,3,L)  (1,4,L)  (1,5,L)    (1,6,R)  (1,7,R)  (1,8,R)  (1,9,R)  (1,10,R)  (1,11,R)
+(2,0,L)  (2,1,L)  (2,2,L)  (2,3,L)  (2,4,L)  (2,5,L)    (2,6,R)  (2,7,R)  (2,8,R)  (2,9,R)  (2,10,R)  (2,11,R)
+                           (3,3,L)  (3,4,L)  (3,5,L)    (3,6,R)  (3,7,R)  (3,8,R)
+"""
+
+# Aliases for home row mods and shifted symbols
+[aliases]
+# Home row mods - left hand
+hrm_a = "MT(A, LGui, HRM)"
+hrm_s = "MT(S, LAlt, HRM)"
+hrm_d = "MT(D, LShift, HRM)"
+hrm_f = "MT(F, LCtrl, HRM)"
+# Home row mods - right hand
+hrm_j = "MT(J, RCtrl, HRM)"
+hrm_k = "MT(K, RShift, HRM)"
+hrm_l = "MT(L, RAlt, HRM)"
+hrm_semi = "MT(Semicolon, RGui, HRM)"
+# Ctrl/Esc tap-hold
+ctrl_esc = "MT(Escape, LCtrl, HRM)"
+# Shifted symbols
+excl = "WM(Kc1, LShift)"
+at = "WM(Kc2, LShift)"
+hash = "WM(Kc3, LShift)"
+dllr = "WM(Kc4, LShift)"
+prcnt = "WM(Kc5, LShift)"
+caret = "WM(Kc6, LShift)"
+amps = "WM(Kc7, LShift)"
+astrk = "WM(Kc8, LShift)"
+lpar = "WM(Kc9, LShift)"
+rpar = "WM(Kc0, LShift)"
+under = "WM(Minus, LShift)"
+plus = "WM(Equal, LShift)"
+lbrc = "WM(LeftBracket, LShift)"
+rbrc = "WM(RightBracket, LShift)"
+pipe = "WM(Backslash, LShift)"
+tilde = "WM(Grave, LShift)"
+
+# -----------------------------------------------------------------------------------------
+# Layer 0: Default (Base)
+# -----------------------------------------------------------------------------------------
+# |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U   |  I  |  O  |  P  | BSPC |
+# | CTRL/ESC | A/GUI | S/ALT | D/SFT | F/CTL | G |   | H | J/CTL | K/SFT | L/ALT | ;/GUI | '  |
+# | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M   |  ,  |  .  |  /  | RSHFT|
+#                     | MO2 | MO1 | SPC |   | ENT | MO1  | MO2 |
+[[layer]]
+name = "default"
+keys = """
+Tab        Q          W          E          R          T          Y      U          I          O        P            Backspace
+@ctrl_esc  @hrm_a     @hrm_s     @hrm_d     @hrm_f     G          H      @hrm_j     @hrm_k     @hrm_l   @hrm_semi    Quote
+LShift     Z          X          C          V          B          N      M          Comma      Dot      Slash        RShift
+                                 MO(2)      MO(1)      Space      Enter  MO(1)      MO(2)
+"""
+
+# -----------------------------------------------------------------------------------------
+# Layer 1: Lower (Numbers + Navigation)
+# -----------------------------------------------------------------------------------------
+# |  TAB |  1  |  2  |  3  |  4  |  5  |   |  6  |  7  |  8  |  9  |  0  | (no-op: studio_unlock) |
+# |  NO  |  _  |  _  |  _  |  _  |  _  |   | LFT | DWN |  UP | RGT |  _  |  _   |
+# | SHFT |  _  |  _  |  _  |  _  |  _  |   |  _  |  _  |  _  |  _  |  _  |  _   |
+#                     | MO3 |  _  |  _  |   |  _  |  _  | MO3 |
+[[layer]]
+name = "lower"
+keys = """
+Tab     Kc1   Kc2   Kc3   Kc4   Kc5      Kc6    Kc7    Kc8   Kc9     Kc0   No
+No      _     _     _     _     _        Left   Down   Up    Right   _     _
+LShift  _     _     _     _     _        _      _      _     _       _     _
+                    MO(3) _     _        _      _      MO(3)
+"""
+# NOTE: Top-right key was ZMK &studio_unlock (no RMK equivalent) -> No
+
+# -----------------------------------------------------------------------------------------
+# Layer 2: Raise (Symbols)
+# -----------------------------------------------------------------------------------------
+# |  TAB |  !  |  @  |  #  |  $  |  %  |   |  ^  |  &  |  *  |  (  |  )  | BSPC |
+# | CTRL |  _  |  _  |  _  |  _  |  _  |   |  -  |  =  |  [  |  ]  |  \  |  `   |
+# | SHFT |  _  |  _  |  _  |  _  |  _  |   |  _  |  +  |  {  |  }  | "|" |  ~   |
+#                     | GUI | MO3 |  _  |   |  _  | MO3 | ALT |
+[[layer]]
+name = "raise"
+keys = """
+Tab     @excl   @at     @hash   @dllr   @prcnt     @caret  @amps   @astrk       @lpar         @rpar      Backspace
+LCtrl   _       _       _       _       _          Minus   Equal   LeftBracket  RightBracket  Backslash  Grave
+LShift  _       _       _       _       _          @under  @plus   @lbrc        @rbrc         @pipe      @tilde
+                        LGui    MO(3)   _          _       MO(3)   RAlt
+"""
+
+# -----------------------------------------------------------------------------------------
+# Layer 3: Bluetooth / System
+# -----------------------------------------------------------------------------------------
+# With ble_profiles_num = 5:
+#   User0-User4 = select BLE profile 0-4
+#   User5 = next profile, User6 = prev profile
+#   User7 = clear current profile bond
+#   User8 = toggle USB/BLE output
+# NOTE: &bootloader has no RMK keycode equivalent - use double-reset or UF2 for bootloader.
+# | (boot) | BT0   | BT1   | BT2   | BT3   | BT4   |   | BTCLR | OUT  |      |      |      | (boot) |
+# |        |       |       |       |       |       |   |       |      |      |      |      |        |
+# |        |       |       |       |       |       |   |       |      |      |      |      |        |
+#                          |       |       | TO4   |   | TO1   |      |      |
+[[layer]]
+name = "bt"
+keys = """
+No      User0   User1   User2   User3   User4      User7   User8   _     _     _     No
+_       _       _       _       _       _          _       _       _     _     _     _
+_       _       _       _       _       _          _       _       _     _     _     _
+                        _       _       TO(4)      TO(1)   _       _
+"""
+# NOTE: Top-left and top-right were ZMK &bootloader -> No (use double-reset or UF2 instead)
+
+# -----------------------------------------------------------------------------------------
+# Layer 4: Gaming (no home row mods, plain keys)
+# -----------------------------------------------------------------------------------------
+# |  TAB |  Q  |  W  |  E  |  R  |  T  |   |  Y  |  U  |  I  |  O  |  P  | BSPC |
+# | CTRL/ESC | A | S  |  D  |  F  |  G  |   |  H  |  J  |  K  |  L  |  ;  |  '   |
+# | SHFT |  Z  |  X  |  C  |  V  |  B  |   |  N  |  M  |  ,  |  .  |  /  | RSHFT|
+#                     | MO2 | MO1 | SPC |   | ENT | MO1 | MO2 |
+[[layer]]
+name = "gaming"
+keys = """
+Tab        Q     W     E     R      T        Y      U     I      O      P          Backspace
+@ctrl_esc  A     S     D     F      G        H      J     K      L      Semicolon  Quote
+LShift     Z     X     C     V      B        N      M     Comma  Dot    Slash      RShift
+                       MO(2) MO(1)  Space    Enter  MO(1) MO(2)
+"""
+
+# Home row mod behavior configuration
+# Tune these timings to your preference
+[behavior.morse]
+enable_flow_tap = true
+prior_idle_time = "120ms"
+hold_timeout = "280ms"
+gap_timeout = "250ms"
+
+[behavior.morse.profiles]
+# HRM profile: bilateral tap (same-hand combos always tap), permissive hold
+HRM = { unilateral_tap = true, permissive_hold = true, hold_timeout = "280ms", gap_timeout = "250ms" }
+
+[ble]
+enabled = true
+
+[split]
+connection = "ble"
+
+[split.central]
+rows = 4
+cols = 6
+row_offset = 0
+col_offset = 0
+
+[split.central.matrix]
+# TODO: Update these pin assignments to match your actual Corne wiring
+row_pins = ["P1_04", "P1_06", "P0_10", "P0_09"]
+col_pins = ["P0_02", "P1_15", "P1_13", "P1_11", "P0_28", "P0_03"]
+# RMK uses col2row as the default matrix diode direction, if you want to use a row2col matrix, add `row2col = true`
+# row2col = true
+
+[[split.peripheral]]
+rows = 4
+cols = 6
+row_offset = 0
+col_offset = 6
+
+[split.peripheral.matrix]
+# TODO: Update these pin assignments to match your actual Corne wiring
+row_pins = ["P1_04", "P1_06", "P0_10", "P0_09"]
+col_pins = ["P0_02", "P1_15", "P1_13", "P1_11", "P0_28", "P0_03"]
+# RMK uses col2row as the default matrix diode direction, if you want to use a row2col matrix, add `row2col = true`
+# row2col = true
+
+[rmk]
+split_peripherals_num = 1
+# 5 BLE profiles to match your original ZMK BT_SEL 0-4
+ble_profiles_num = 5
