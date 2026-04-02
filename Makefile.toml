@@ -83,3 +83,40 @@ dependencies = ["objcopy-peripheral"]
 
 [tasks.uf2]
 dependencies = ["uf2-central", "uf2-peripheral"]
+
+[tasks.flash-central]
+script = '''
+MOUNT="/run/media/$(whoami)/NICENANO"
+echo "Waiting for NICENANO drive to appear..."
+while [ ! -d "$MOUNT" ]; do sleep 0.5; done
+cp corne-central.uf2 "$MOUNT/"
+echo "Central flashed!"
+'''
+dependencies = ["uf2-central"]
+
+[tasks.flash-peripheral]
+script = '''
+MOUNT="/run/media/$(whoami)/NICENANO"
+echo "Waiting for NICENANO drive to appear..."
+while [ ! -d "$MOUNT" ]; do sleep 0.5; done
+cp corne-peripheral.uf2 "$MOUNT/"
+echo "Peripheral flashed!"
+'''
+dependencies = ["uf2-peripheral"]
+
+[tasks.flash]
+script = '''
+MOUNT="/run/media/$(whoami)/NICENANO"
+echo "Waiting for NICENANO drive to appear for central..."
+while [ ! -d "$MOUNT" ]; do sleep 0.5; done
+cp corne-central.uf2 "$MOUNT/"
+echo "Central flashed!"
+echo ""
+echo "Put the peripheral into bootloader mode, then press Enter..."
+read -r
+echo "Waiting for NICENANO drive to appear for peripheral..."
+while [ ! -d "$MOUNT" ]; do sleep 0.5; done
+cp corne-peripheral.uf2 "$MOUNT/"
+echo "Peripheral flashed!"
+'''
+dependencies = ["uf2"]
