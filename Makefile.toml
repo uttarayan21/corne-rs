@@ -89,6 +89,8 @@ script = '''
 MOUNT="/run/media/$(whoami)/NICENANO"
 echo "Waiting for NICENANO drive to appear..."
 while [ ! -d "$MOUNT" ]; do sleep 0.5; done
+echo "Found NICENANO at $MOUNT"
+echo "Flashing central..."
 cp corne-central.uf2 "$MOUNT/"
 echo "Central flashed!"
 '''
@@ -99,6 +101,8 @@ script = '''
 MOUNT="/run/media/$(whoami)/NICENANO"
 echo "Waiting for NICENANO drive to appear..."
 while [ ! -d "$MOUNT" ]; do sleep 0.5; done
+echo "Found NICENANO at $MOUNT"
+echo "Flashing peripheral..."
 cp corne-peripheral.uf2 "$MOUNT/"
 echo "Peripheral flashed!"
 '''
@@ -109,6 +113,8 @@ script = '''
 MOUNT="/run/media/$(whoami)/NICENANO"
 echo "Waiting for NICENANO drive to appear for central..."
 while [ ! -d "$MOUNT" ]; do sleep 0.5; done
+echo "Found NICENANO at $MOUNT"
+echo "Flashing central..."
 cp corne-central.uf2 "$MOUNT/"
 echo "Central flashed!"
 echo ""
@@ -116,6 +122,8 @@ echo "Put the peripheral into bootloader mode, then press Enter..."
 read -r
 echo "Waiting for NICENANO drive to appear for peripheral..."
 while [ ! -d "$MOUNT" ]; do sleep 0.5; done
+echo "Found NICENANO at $MOUNT"
+echo "Flashing peripheral..."
 cp corne-peripheral.uf2 "$MOUNT/"
 echo "Peripheral flashed!"
 '''

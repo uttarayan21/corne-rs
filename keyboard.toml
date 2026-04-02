@@ -31,7 +31,7 @@ hrm_k = "MT(K, RShift, HRM)"
 hrm_l = "MT(L, RAlt, HRM)"
 hrm_semi = "MT(Semicolon, RGui, HRM)"
 # Ctrl/Esc tap-hold
-ctrl_esc = "MT(Escape, LCtrl, HRM)"
+ctrl_esc = "MT(Escape, LCtrl, PINKY)"
 # Shifted symbols
 excl = "WM(Kc1, LShift)"
 at = "WM(Kc2, LShift)"
@@ -149,6 +149,8 @@ gap_timeout = "200ms"
 [behavior.morse.profiles]
 # HRM profile: bilateral tap (same-hand combos always tap), permissive hold
 HRM = { unilateral_tap = true, hold_on_other_press = true, hold_timeout = "200ms", gap_timeout = "200ms" }
+# Pinky Ctrl/Esc: no flow_tap, instant hold on any keypress
+PINKY = { hold_on_other_press = true, hold_timeout = "200ms", gap_timeout = "200ms" }
 
 [ble]
 enabled = true
